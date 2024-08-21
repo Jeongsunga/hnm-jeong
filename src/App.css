@@ -1,7 +1,12 @@
-.login-button {
+.login-area {
   display: flex;
   justify-content: flex-end;
-  margin: 20px;
+  margin: 30px;
+  cursor: pointer;
+}
+
+.login-button{
+  margin: 10px;
 }
 
 .nav-section {
@@ -24,7 +29,8 @@
 }
 
 .search-input {
-  float: right;
+  position: relative;
+  bottom: 10px;
   padding: 20px;
 }
 
@@ -40,4 +46,9 @@
 .search-icon {
   position: relative;
   left: 20px;
+}
+
+.product-img {
+  display: flex;
+  justify-content: flex-end;
 }

@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import ProductCard from '../component/ProductCard';
+import {Container, Row, Col} from "react-bootstrap";
 
 const ProductAll = () => {
-    // eslint-disable-next-line
     const [productList, setProductList] = useState([]);
     const getProducts = async() => {
     let url = `http://localhost:5000/products`
@@ -15,7 +15,13 @@ const ProductAll = () => {
   },[])
   return (
     <div>
-      <ProductCard/>
+      <Container>
+        <Row>
+          {productList.map((menu)=>(
+            <Col lg={3}><ProductCard item={menu}/></Col>
+          ))}
+        </Row>
+      </Container>
     </div>
   )
 }
