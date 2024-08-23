@@ -10,7 +10,7 @@ const ProductAll = () => {
     const getProducts = async() => {
     let searchQuery = query.get('q') || "";
     console.log(searchQuery)
-    let url = `http://localhost:5000/products?q=${searchQuery}`
+    let url = `https://my-json-server.typicode.com/Jeongsunga/hnm-jeong/products?q=${searchQuery}`
     let response = await fetch(url);
     let data = await response.json();
     // 서버측 쿼리문 미작동으로 프론트 단에서 쿼리 기능 구현
@@ -30,7 +30,7 @@ const ProductAll = () => {
       <Container>
         <Row>
           {productList.map((menu)=>(
-            <Col lg={3}><ProductCard item={menu}/></Col>
+            <Col lg={3} sg={12}><ProductCard item={menu}/></Col>
           ))}
         </Row>
       </Container>

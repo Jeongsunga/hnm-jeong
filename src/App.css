@@ -9,6 +9,10 @@
   margin: 10px;
 }
 
+.open-button{
+  display: none;
+}
+
 .nav-section {
   display: flex;
   justify-content: center;
@@ -48,7 +52,56 @@
   left: 20px;
 }
 
+.close-btn{
+  display: none;
+}
+
 .product-img {
   display: flex;
   justify-content: flex-end;
+}
+
+@media screen and (max-width: 1100px) {
+  .header {
+    display: flex;
+    justify-content: space-between;
+  }
+  .open-button {
+    display: block;
+    cursor: pointer;
+    margin: 30px;
+  }
+  .close-btn {
+    display: block;
+    text-align: right;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    margin-right: 10px;
+  }
+  .menu-list{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .reverse-list{
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .slide-menu {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 300px;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    overflow-y: auto;
+    transition: left 0.3s ease;
+    z-index: 1000;
+  }
+
+  .slide-menu.open {
+    left: 0;
+  } 
 }
