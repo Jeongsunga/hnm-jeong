@@ -26,7 +26,7 @@
 <img width="1285" alt="Image" src="https://github.com/user-attachments/assets/79bcd443-b5ff-47ef-94bc-7e7bc2f9d772" />
 로그인 버튼을 누르거나, 로그인하지 않고 상품 카드를 클릭 시 로그인 화면으로 이동
 
-<img width="1282" alt="Image" src="https://github.com/user-attachments/assets/a6137f17-43bc-4968-bec6-417c933f518c" />
+<img width="1268" alt="Image" src="https://github.com/user-attachments/assets/8af71e48-35cb-4ad9-8c83-9256535d275b" />
 로그인한 경우 화면 (찜하기, 장바구니 버튼을 볼 수 있다.)
 
 ## < 디테일 상품 페이지 >
