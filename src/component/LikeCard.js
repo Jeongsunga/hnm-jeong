@@ -1,11 +1,19 @@
 import React from 'react'
 import './ProductCard.css'
 import {useNavigate} from 'react-router-dom'
+import { Button} from 'react-bootstrap';
 
-const ProductCard = ({item}) => {
+const LikeCard = ({item, setLike}) => {
     const navigate = useNavigate()
     const showDetail = () => {
         navigate(`/product/${item.id}`)
+    }
+    const deleteProduct = (id) => {
+        setLike((prevLike) =>
+            prevLike.filter(
+                (item) => !(item.id === id)
+            )
+        );
     }
   return (
     <div className="product-card">
@@ -20,8 +28,9 @@ const ProductCard = ({item}) => {
         <div className="product-price">￦{item?.price.toLocaleString()}</div>
         <div className="product-new">{item?.new === true ? "New!" : "\u00A0"}</div>
       </div>
+      <Button className='delete-button' variant="secondary" onClick={()=>{deleteProduct(item.id)}}>삭제</Button>
     </div>
   )
 }
 
-export default ProductCard
+export default LikeCard

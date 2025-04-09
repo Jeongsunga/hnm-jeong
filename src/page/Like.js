@@ -1,8 +1,16 @@
 import React from 'react'
+import {Container, Row, Col} from "react-bootstrap";
+import LikeCard from '../component/LikeCard';
 
-const Like = () => {
+const Like = ({like, setLike}) => {
   return (
-    <div>Like</div>
+    <Container>
+        <Row>
+          {like.map((menu)=>(
+            <Col lg={3} sg={12}><LikeCard item={menu} setLike={setLike}/></Col>
+          ))}
+        </Row>
+    </Container>
   )
 }
 

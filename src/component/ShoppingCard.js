@@ -22,14 +22,13 @@ const ShoppingCard = ({item, setCart}) => {
       </div>
       <div className="list-product-info">
         <div className="product-label">
-          {item.product?.choice === true ? "Conscious Choice" : ""}
+          {item.product?.choice === true ? "Conscious Choice" : "\u00A0"}
         </div>
         <div className="product-title">{item.product?.title}({item?.size})</div>
         <div className="product-price">￦{item.product?.price.toLocaleString()}</div>
-        <div className="product-new">{item.product?.new === true ? "New!" : ""}</div>
+        <div className="product-new">{item.product?.new === true ? "New!" : "\u00A0"}</div>
       </div>
       <Button className='delete-button' variant="secondary" onClick={()=>{deleteProduct(item.product.id, item.size)}}>삭제</Button>
-
     </div>
   )
 }

@@ -6,7 +6,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 
 
-const ProductDetail = ({cart, setCart}) => {
+const ProductDetail = ({cart, setCart, like, setLike}) => {
   let {id} = useParams()
   const navigate = useNavigate();
   const [product, setProduct] = useState(null);
@@ -38,10 +38,27 @@ const ProductDetail = ({cart, setCart}) => {
         return prevCart;
       }
   
+      navigate('/mypage/shopping');
       return [...prevCart, output];
     });
 
-    navigate('/mypage/shopping');
+  };
+
+  const goLike = () => {
+  
+    setLike((prevLike) => {
+      const isAlreadyInLike = prevLike.some(
+        (item) => item.id === product.id
+      );
+  
+      if (isAlreadyInLike) {
+        alert("이미 찜에 있는 상품입니다!");
+        return prevLike;
+      }
+      
+      navigate('/mypage/like');
+      return [...prevLike, product];
+    });
   };
 
   useEffect(()=>{
@@ -69,7 +86,7 @@ const ProductDetail = ({cart, setCart}) => {
             {pickSize && <Dropdown.Item href="#/action-index" onClick={() => getSize(null)}>삭제</Dropdown.Item>}
           </DropdownButton>
           <button className="product-button" style={{marginTop: "150px"}} onClick={() => goCart()}>장바구니</button>
-          <button className="product-button">찜</button>
+          <button className="product-button" onClick={() => goLike()}>찜</button>
         </Col>
       </Row>
     </Container>

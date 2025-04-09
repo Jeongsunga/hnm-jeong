@@ -20,20 +20,24 @@ import MypageRouteLike from './route/MypageRouteLike';
 function App() {
   const [authenticate, setAuthenticate] = useState(false)
   const [cart, setCart] = useState([]);
+  const [like, setLike] = useState([]);
   useEffect(()=>{
     console.log("aaa", authenticate)
   },[authenticate])
   useEffect(()=>{
     console.log("bbb", cart)
   }, [cart])
+  useEffect(()=>{
+    console.log("ccc", like)
+  }, [like])
   return (
     <div>
       <Navbar authenticate={authenticate} setAuthenticate={setAuthenticate}/>
       <Routes>
         <Route path="/" element={<ProductAll/>}/>
         <Route path="/login" element={<Login setAuthenticate={setAuthenticate}/>}/>
-        <Route path="/product/:id" element={<PrivateRoute authenticate={authenticate} cart={cart} setCart={setCart}/>}/>
-        <Route path='/mypage/like' element={<MypageRouteLike authenticate={authenticate}/>}/>
+        <Route path="/product/:id" element={<PrivateRoute authenticate={authenticate} cart={cart} setCart={setCart} like={like} setLike={setLike}/>}/>
+        <Route path='/mypage/like' element={<MypageRouteLike authenticate={authenticate} like={like} setLike={setLike}/>}/>
         <Route path='/mypage/shopping' element={<MypageRouteShop authenticate={authenticate} cart={cart} setCart={setCart}/>}/>
       </Routes>
     </div>
