@@ -1,10 +1,8 @@
 import React, {useState} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from "@fortawesome/free-regular-svg-icons";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faBars, faTimes, faCartShopping, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const Navbar = ({ authenticate, setAuthenticate }) => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -26,6 +24,14 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
     navigate("/");
   };
 
+  const goToLikePage = () => {
+    navigate("/mypage/like")
+  };
+
+  const goToCartPage = () => {
+    navigate("/mypage/shopping");
+  };
+
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
@@ -43,9 +49,11 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
           <div className="open-area" onClick={toggleMenu}>
             <FontAwesomeIcon icon={faBars} className="open-button"/>
           </div>
-          <div className="login-area" onClick={goToLogin}>
+          <div className="login-area">
+              {authenticate && <FontAwesomeIcon icon={faHeart} className="login-button" onClick={goToLikePage}/>}
+              {authenticate && <FontAwesomeIcon icon={faCartShopping} className="login-button" onClick={goToCartPage}/>}
               <FontAwesomeIcon icon={faUser} className="login-button"/>
-              <div className="login-button">{authenticate ? "로그아웃" : "로그인"}</div>
+              <div className="login-button" onClick={goToLogin}>{authenticate ? "로그아웃" : "로그인"}</div>
           </div>
         </div>
         <div className="nav-section" onClick={goToHome}>

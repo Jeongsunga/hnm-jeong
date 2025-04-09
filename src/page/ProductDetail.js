@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { Container, Row, Col } from 'react-bootstrap'
 import './ProductDetail.css'
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 
 
-const ProductDetail = () => {
+const ProductDetail = ({cart, setCart}) => {
   let {id} = useParams()
+  const navigate = useNavigate();
   const [product, setProduct] = useState(null);
   const [pickSize, setPickSize] = useState(null);
   const getProductDetail = async() => {
@@ -19,6 +20,30 @@ const ProductDetail = () => {
   const getSize = (size) => {
     setPickSize(size);
   }
+  const goCart = () => {
+    if (!pickSize) {
+      alert("사이즈를 선택해주세요.");
+      return;
+    }
+  
+    const output = { product, size: pickSize };
+  
+    setCart((prevCart) => {
+      const isAlreadyInCart = prevCart.some(
+        (item) => item.product.id === output.product.id && item.size === output.size
+      );
+  
+      if (isAlreadyInCart) {
+        alert("이미 장바구니에 있는 상품입니다!");
+        return prevCart;
+      }
+  
+      return [...prevCart, output];
+    });
+
+    navigate('/mypage/shopping');
+  };
+
   useEffect(()=>{
     getProductDetail()
     // eslint-disable-next-line
@@ -43,7 +68,7 @@ const ProductDetail = () => {
             {pickSize && <div className='dropdown-divider'></div>}
             {pickSize && <Dropdown.Item href="#/action-index" onClick={() => getSize(null)}>삭제</Dropdown.Item>}
           </DropdownButton>
-          <button className="product-button" style={{marginTop: "150px"}}>장바구니</button>
+          <button className="product-button" style={{marginTop: "150px"}} onClick={() => goCart()}>장바구니</button>
           <button className="product-button">찜</button>
         </Col>
       </Row>

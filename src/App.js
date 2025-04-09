@@ -6,6 +6,8 @@ import Login from './page/Login';
 import Navbar from './component/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import PrivateRoute from './route/PrivateRoute';
+import MypageRouteShop from './route/MypageRouteShop';
+import MypageRouteLike from './route/MypageRouteLike';
 
 // 전체 상품 페이지, 로그인 페이지, 상품 상세 페이지, 네비게이션 바
 // 1. 전체 상품 페이지에서는 전체 상품을 볼 수 있다.
@@ -17,16 +19,22 @@ import PrivateRoute from './route/PrivateRoute';
 // 6. 상품을 검색할 수 있다.
 function App() {
   const [authenticate, setAuthenticate] = useState(false)
+  const [cart, setCart] = useState([]);
   useEffect(()=>{
     console.log("aaa", authenticate)
   },[authenticate])
+  useEffect(()=>{
+    console.log("bbb", cart)
+  }, [cart])
   return (
     <div>
       <Navbar authenticate={authenticate} setAuthenticate={setAuthenticate}/>
       <Routes>
         <Route path="/" element={<ProductAll/>}/>
         <Route path="/login" element={<Login setAuthenticate={setAuthenticate}/>}/>
-        <Route path="/product/:id" element={<PrivateRoute authenticate={authenticate}/>}/>
+        <Route path="/product/:id" element={<PrivateRoute authenticate={authenticate} cart={cart} setCart={setCart}/>}/>
+        <Route path='/mypage/like' element={<MypageRouteLike authenticate={authenticate}/>}/>
+        <Route path='/mypage/shopping' element={<MypageRouteShop authenticate={authenticate} cart={cart} setCart={setCart}/>}/>
       </Routes>
     </div>
   );
