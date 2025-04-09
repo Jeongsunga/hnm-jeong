@@ -40,6 +40,7 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
     if(event.key === "Enter"){
       // 입력한 검색어를 읽어와서 url로 바꿔준다.
       let keyword = event.target.value
+      event.target.value = ''
       navigate(`/?q=${keyword}`)
     }
   }
