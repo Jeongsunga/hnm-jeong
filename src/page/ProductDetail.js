@@ -69,8 +69,8 @@ const ProductDetail = ({cart, setCart, like, setLike}) => {
   return (
     <Container>
       <Row className="product-area">
-        <Col className="product-img">
-          <img src={product?.img} alt=""/>
+        <Col xs={12} md={6} className="product-img d-flex justify-content-center align-items-center">
+          <img src={product?.img} alt="" style={{ maxWidth: '500px', width: '100%', height: 'auto' }}/>
         </Col>
         <Col className="product-info">
           <h3 className="font-bold margin-side">{product?.title}</h3>
